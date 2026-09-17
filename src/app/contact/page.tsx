@@ -7,8 +7,11 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="mx-auto max-w-2xl px-6 py-20">
-      <h1 className="font-serif text-4xl text-maroon">Get a Quote</h1>
+    <section className="mx-auto max-w-2xl px-6 py-24">
+      <h1 className="font-heading text-sm font-medium uppercase tracking-[0.3em] text-foreground/50">
+        Contact
+      </h1>
+      <p className="mt-4 font-serif text-3xl text-maroon">Get a Quote</p>
       <p className="mt-4 text-foreground/70">
         Tell us about your project and we&apos;ll get back to you.
       </p>

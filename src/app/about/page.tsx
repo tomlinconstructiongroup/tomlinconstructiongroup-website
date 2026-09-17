@@ -6,8 +6,11 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-20">
-      <h1 className="font-serif text-4xl text-maroon">About Us</h1>
+    <section className="mx-auto max-w-3xl px-6 py-24">
+      <h1 className="font-heading text-sm font-medium uppercase tracking-[0.3em] text-foreground/50">
+        About Us
+      </h1>
+      <p className="mt-4 font-serif text-3xl text-maroon">Our Story</p>
       <p className="mt-6 text-lg leading-relaxed text-foreground/80">
         Tomlin Construction Group is committed to delivering quality
         craftsmanship and dependable service on every project we take on.

@@ -18,6 +18,7 @@
   --color-maroon-dark: var(--color-maroon-dark);
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
+  --font-heading: var(--font-oswald);
 }
 
 body {
