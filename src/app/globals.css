@@ -19,6 +19,7 @@
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
   --font-heading: var(--font-oswald);
+  --font-luxury: var(--font-josefin);
 }
 
 body {

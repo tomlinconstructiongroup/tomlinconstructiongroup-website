@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Oswald } from "next/font/google";
+import { Playfair_Display, Inter, Oswald, Josefin_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -19,6 +17,13 @@ const oswald = Oswald({
   subsets: ["latin"],
 });
 
+const josefin = Josefin_Sans({
+  variable: "--font-josefin",
+  weight: ["300", "400"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Tomlin Construction Group",
   description:
@@ -29,12 +34,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} ${oswald.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${oswald.variable} ${josefin.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-foreground">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
