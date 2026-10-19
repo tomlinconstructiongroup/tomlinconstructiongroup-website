@@ -1,23 +1,9 @@
 import type { Metadata } from "next";
+import { SERVICES } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Services | Tomlin Construction Group",
 };
-
-const SERVICES = [
-  {
-    name: "Residential Construction",
-    description: "[Placeholder description — replace with your real service details.]",
-  },
-  {
-    name: "Remodeling & Renovations",
-    description: "[Placeholder description — replace with your real service details.]",
-  },
-  {
-    name: "Project Management",
-    description: "[Placeholder description — replace with your real service details.]",
-  },
-];
 
 export default function ServicesPage() {
   return (
@@ -27,7 +13,8 @@ export default function ServicesPage() {
       </h1>
       <p className="mt-4 font-serif text-3xl text-maroon">What We Offer</p>
       <p className="mt-4 text-foreground/70">
-        [Replace this list with your actual services and service area.]
+        From custom homes to commercial projects, we bring the same craftsmanship and care to
+        every build.
       </p>
       <div className="mt-10 grid gap-px overflow-hidden rounded-sm border border-maroon/10 bg-maroon/10 sm:grid-cols-2">
         {SERVICES.map((service) => (

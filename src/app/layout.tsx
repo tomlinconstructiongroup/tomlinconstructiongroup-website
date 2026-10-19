@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Oswald } from "next/font/google";
+import { Playfair_Display, Inter, Oswald, Cinzel } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -18,6 +18,12 @@ const oswald = Oswald({
   subsets: ["latin"],
 });
 
+// Brand typeface for the company name, matching the TCG logo.
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Tomlin Construction Group",
   description:
@@ -28,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} ${oswald.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${oswald.variable} ${cinzel.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-foreground">
         {children}

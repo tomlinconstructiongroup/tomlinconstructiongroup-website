@@ -35,7 +35,7 @@ export default function ConceptReclaimedPage() {
       <header className="sticky top-0 z-50 border-b border-maroon/10 bg-cream/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo-icon.svg" alt="Tomlin Construction Group" width={28} height={35} />
+            <Image src="/logo-icon.svg" alt="Tomlin Construction Group" width={31} height={35} />
             <span className="font-serif text-base tracking-wide text-maroon">
               Tomlin Construction Group
             </span>

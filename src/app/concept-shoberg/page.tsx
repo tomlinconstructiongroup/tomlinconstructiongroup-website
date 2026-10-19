@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
+import { PHONE } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: "Concept: Shoberg-Style Layout | Tomlin Construction Group",
@@ -30,7 +31,7 @@ export default function ConceptShobergPage() {
           ))}
         </nav>
         <div className="flex items-center gap-6 text-sm">
-          <span className="hidden sm:inline">(000) 000-0000</span>
+          <span className="hidden sm:inline">{PHONE}</span>
           <div className="flex flex-col gap-1.5">
             <span className="block h-px w-6 bg-white" />
             <span className="block h-px w-6 bg-white" />
