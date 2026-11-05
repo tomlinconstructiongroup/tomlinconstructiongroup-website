@@ -13,7 +13,7 @@ const PARAGRAPHS = [
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-24">
+    <section className="mx-auto max-w-3xl px-6 py-14 sm:py-24">
       <h1 className="font-brand text-3xl font-medium uppercase tracking-[0.2em] text-maroon sm:text-4xl">
         About
       </h1>

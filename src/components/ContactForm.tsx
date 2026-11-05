@@ -7,7 +7,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 
 const INPUT_CLASS =
-  "mt-1 w-full rounded-md border border-maroon/20 bg-cream px-4 py-2 outline-none focus:border-maroon";
+  "mt-1 min-h-11 w-full rounded-md border border-maroon/20 bg-cream px-4 py-2 outline-none focus:border-maroon";
 
 function Field({
   id,
@@ -145,7 +145,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="font-heading mt-2 border border-maroon px-10 py-3 text-xs font-medium uppercase tracking-[0.2em] text-maroon transition hover:bg-maroon hover:text-cream disabled:opacity-60"
+        className="font-heading mt-2 min-h-11 border border-maroon px-10 py-3 text-xs font-medium uppercase tracking-[0.2em] text-maroon transition hover:bg-maroon hover:text-cream disabled:opacity-60"
       >
         {status === "submitting" ? "Submitting..." : "Submit"}
       </button>

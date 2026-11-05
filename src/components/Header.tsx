@@ -19,13 +19,13 @@ export default function Header() {
   if (pathname === "/") {
     return (
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-5 px-4 py-6 sm:justify-end sm:gap-10 sm:px-6">
+        <nav className="mx-auto flex max-w-6xl items-center justify-center gap-x-3 px-3 py-3 min-[360px]:gap-x-5 sm:justify-end sm:gap-x-10 sm:px-6 sm:py-6">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               aria-current={link.href === pathname ? "page" : undefined}
-              className="border-b border-transparent pb-1 text-xs uppercase tracking-[0.18em] sm:tracking-[0.25em] text-white/85 transition hover:text-white aria-[current=page]:border-white/70 aria-[current=page]:text-white"
+              className="inline-flex min-h-11 items-center text-xs uppercase tracking-[0.14em] text-white/85 underline-offset-[6px] transition hover:text-white aria-[current=page]:text-white aria-[current=page]:underline min-[360px]:tracking-[0.18em] sm:min-h-0 sm:tracking-[0.25em]"
             >
               {link.label}
             </Link>
@@ -36,8 +36,9 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-maroon/10 bg-cream/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-3 px-6 py-4">
+    // Only sticky above phone width, where it doesn't take over the screen.
+    <header className="z-50 border-b border-maroon/10 bg-cream/90 backdrop-blur sm:sticky sm:top-0">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-1 px-6 pb-1 pt-4 sm:py-4">
         <Link href="/" className="flex items-center gap-3">
           {/* Small-size monogram: bolder strokes so it stays crisp at header size. */}
           <Image src="/logo-icon-small.svg" alt="" width={44} height={50} preload />
@@ -54,7 +55,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-heading text-xs font-medium uppercase tracking-[0.15em] text-foreground/70 transition hover:text-maroon"
+              className="font-heading inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.15em] text-foreground/70 transition hover:text-maroon sm:min-h-0"
             >
               {link.label}
             </Link>

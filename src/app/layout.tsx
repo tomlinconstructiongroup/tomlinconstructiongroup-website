@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, Oswald, Cinzel } from "next/font/google";
+import { connection } from "next/server";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -30,7 +31,10 @@ export const metadata: Metadata = {
     "Tomlin Construction Group — quality craftsmanship and reliable construction services.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  // Render every page per request: the CSP nonce in src/proxy.ts changes each time.
+  await connection();
+
   return (
     <html
       lang="en"

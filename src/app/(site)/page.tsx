@@ -44,13 +44,13 @@ export default function Home() {
           <Image src="/logo-icon-light.svg" alt="" width={105} height={120} preload />
           <div className="font-brand [text-shadow:0_1px_14px_rgb(0_0_0/0.5)]">
             <h1 className="-mr-[0.14em] text-5xl font-medium uppercase tracking-[0.14em] sm:text-7xl">Tomlin</h1>
-            <p className="mt-3 -mr-[0.3em] text-base font-medium uppercase tracking-[0.3em] text-white/90 sm:text-xl">
+            <p className="mt-3 -mr-[0.22em] text-sm font-medium uppercase tracking-[0.22em] text-white/90 min-[360px]:-mr-[0.3em] min-[360px]:text-base min-[360px]:tracking-[0.3em] sm:text-xl">
               Construction Group
             </p>
           </div>
           <Link
             href="/contact"
-            className="mt-4 border border-white/70 px-10 py-3 text-xs uppercase tracking-[0.25em] transition hover:bg-white hover:text-maroon"
+            className="mt-4 inline-flex min-h-11 items-center border border-white/70 px-10 py-3 text-xs uppercase tracking-[0.25em] transition hover:bg-white hover:text-maroon"
           >
             Get Started
           </Link>
@@ -70,7 +70,7 @@ export default function Home() {
               />
             </div>
             <div className="mx-auto mt-7 h-px w-16 bg-maroon/30" />
-            <h2 className="font-brand mt-7 text-2xl font-medium uppercase tracking-[0.3em] text-maroon md:text-xl md:tracking-[0.2em] lg:text-2xl lg:tracking-[0.3em]">
+            <h2 className="font-brand mt-7 text-xl font-medium uppercase tracking-[0.18em] text-maroon min-[400px]:text-2xl min-[400px]:tracking-[0.3em] md:text-lg md:tracking-[0.15em] lg:text-2xl lg:tracking-[0.3em]">
               {value.name}
             </h2>
             <p className="mx-auto mt-4 max-w-xs leading-relaxed text-foreground/70">

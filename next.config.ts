@@ -1,23 +1,7 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const isDev = process.env.NODE_ENV === "development";
-
-const contentSecurityPolicy = [
-  "default-src 'self'",
-  // Next.js needs inline scripts; React also needs eval, but only in development.
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' blob: data:",
-  "font-src 'self'",
-  // The contact form posts straight to Web3Forms from the browser.
-  "connect-src 'self' https://api.web3forms.com",
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "frame-ancestors 'none'",
-].join("; ");
-
+// The Content-Security-Policy header is set per request in src/proxy.ts.
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   turbopack: {
@@ -28,7 +12,6 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: [
-          { key: "Content-Security-Policy", value: contentSecurityPolicy },
           // Covers this hostname only, so it can't affect other subdomains.
           { key: "Strict-Transport-Security", value: "max-age=31536000" },
           { key: "X-Content-Type-Options", value: "nosniff" },

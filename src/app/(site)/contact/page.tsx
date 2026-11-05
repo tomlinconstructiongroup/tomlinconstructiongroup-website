@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <section className="mx-auto max-w-2xl px-6 py-24">
+    <section className="mx-auto max-w-2xl px-6 py-14 sm:py-24">
       <div className="flex flex-col items-center text-center">
         <Image src="/logo-icon.svg" alt="" width={84} height={96} />
         <div className="font-brand mt-5 text-maroon">
@@ -19,11 +19,11 @@ export default function ContactPage() {
             Construction Group
           </p>
         </div>
-        <div className="mt-5 flex flex-col gap-1 text-foreground/70">
-          <a href={PHONE_HREF} className="transition hover:text-maroon">
+        <div className="mt-3 flex flex-col text-foreground/70">
+          <a href={PHONE_HREF} className="inline-flex min-h-11 items-center justify-center transition hover:text-maroon">
             {PHONE}
           </a>
-          <a href={EMAIL_HREF} className="break-all transition hover:text-maroon">
+          <a href={EMAIL_HREF} className="inline-flex min-h-11 items-center justify-center break-all transition hover:text-maroon">
             {EMAIL}
           </a>
         </div>
