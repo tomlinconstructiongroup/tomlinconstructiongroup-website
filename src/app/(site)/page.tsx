@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Photos are placeholders — swap in real project photography. The value photos are cropped from
-// the design mockup; the hero photo was supplied by the owner.
+// Stand-in imagery, not completed Tomlin projects — swap in real project photography once it exists.
+// Value photos are cropped from Ben's AI-generated mockup; Ben generated the hero with ChatGPT.
 const VALUES = [
   {
     name: "Quality",
