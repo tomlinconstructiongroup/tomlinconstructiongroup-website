@@ -41,6 +41,13 @@ export default function ContactForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    // Honeypot: people never see this field, so only bots fill it in. Show them
+    // the normal success message without sending anything.
+    if (new FormData(event.currentTarget).get("company_website")) {
+      setStatus("success");
+      return;
+    }
+
     if (!WEB3FORMS_ACCESS_KEY) {
       setStatus("error");
       return;
@@ -50,6 +57,7 @@ export default function ContactForm() {
     // Grab the form now: React clears event.currentTarget once we await.
     const form = event.currentTarget;
     const formData = new FormData(form);
+    formData.delete("company_website");
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
     formData.append("subject", "New quote request");
     // Web3Forms shows `name` as the sender in the notification email.
@@ -82,6 +90,14 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <input
+        type="text"
+        name="company_website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
       <div className="grid gap-4 sm:grid-cols-2">
         <Field id="first_name" label="First name" required>
           <input
