@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Oswald, Cinzel } from "next/font/google";
+import { Inter, Cinzel } from "next/font/google";
 import { connection } from "next/server";
+import { pageMetadata, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-});
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const oswald = Oswald({
-  variable: "--font-oswald",
   subsets: ["latin"],
 });
 
@@ -25,10 +15,15 @@ const cinzel = Cinzel({
   subsets: ["latin"],
 });
 
+// Home page metadata; the other pages set their own via pageMetadata().
 export const metadata: Metadata = {
-  title: "Tomlin Construction Group",
-  description:
-    "Tomlin Construction Group — quality craftsmanship and reliable construction services.",
+  metadataBase: new URL(SITE_URL),
+  ...pageMetadata({
+    title: SITE_NAME,
+    description:
+      "Tomlin Construction Group builds custom homes, renovations, additions, outdoor living spaces, and commercial projects in Liberty Hill, Georgetown, and the surrounding areas.",
+    path: "/",
+  }),
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
@@ -38,7 +33,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} ${oswald.variable} ${cinzel.variable} h-full antialiased`}
+      className={`${inter.variable} ${cinzel.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-foreground">
         {children}

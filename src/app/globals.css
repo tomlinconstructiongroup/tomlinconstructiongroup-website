@@ -16,9 +16,7 @@
   --color-cream-dark: var(--color-cream-dark);
   --color-maroon: var(--color-maroon);
   --color-maroon-dark: var(--color-maroon-dark);
-  --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-oswald);
   --font-brand: var(--font-cinzel);
 }
 

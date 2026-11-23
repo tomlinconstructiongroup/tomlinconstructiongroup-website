@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { EMAIL, PHONE_HREF } from "@/lib/contact";
+import { SERVICES } from "@/lib/services";
+import { PREVIEW_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 // Stand-in imagery, not completed Tomlin projects — swap in real project photography once it exists.
 // Value photos are cropped from Ben's AI-generated mockup; Ben generated the hero with ChatGPT.
@@ -8,27 +11,70 @@ const VALUES = [
     name: "Quality",
     image: "/images/value-quality.jpg",
     alt: "Stone exterior wall with a lantern sconce",
-    copy: "We use superior materials, partner with skilled craftsmen, and build with a level of precision that ensures your home stands the test of time.",
+    copy: "We use quality materials, partner with skilled craftsmen, and build with a level of precision that ensures your vision comes to life.",
   },
   {
     name: "Integrity",
     image: "/images/value-integrity.jpg",
     alt: "Construction plans on a table beside a window",
-    copy: "We always do what’s right. Our word matters, and we believe in honest communication, accountability and building trust at every step.",
+    copy: "We hold ourselves accountable, communicate openly and honestly, and work to earn your trust at every stage of the project.",
   },
   {
-    name: "Craftsmanship",
+    name: "Dedication",
     image: "/images/value-craftsmanship.jpg",
     alt: "Vaulted ceiling with exposed timber beams and a stone wall",
-    copy: "It’s in the details. From the foundation to the final finish, we take pride in thoughtful execution and a level of care that’s seen and felt in every space.",
+    copy: "We stay personally involved from start to finish, giving every project the time, focus, and care it deserves.",
   },
 ];
 
-const TAGLINES = ["Built With Purpose", "Grounded In Trust", "Made To Last"];
+const TAGLINES = ["Made To Last", "Grounded In Trust", "Built With Care"];
+
+// Business details for search engines (not shown on the page). No street address on purpose:
+// it's listed as a service-area business until there's a business office.
+const BUSINESS_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo-icon.svg`,
+  image: `${SITE_URL}${PREVIEW_IMAGE.url}`,
+  telephone: PHONE_HREF.replace("tel:", ""),
+  email: EMAIL,
+  description:
+    "Custom homes, renovations and additions, estate and outdoor living, and commercial construction in Liberty Hill, Georgetown, and the surrounding areas north of Austin.",
+  founder: { "@type": "Person", name: "Ben Tomlin" },
+  // Towns within about 45 minutes of Liberty Hill and Georgetown (Austin itself left out on purpose).
+  areaServed: [
+    "Liberty Hill",
+    "Georgetown",
+    "Leander",
+    "Cedar Park",
+    "Round Rock",
+    "Hutto",
+    "Pflugerville",
+    "Taylor",
+    "Jarrell",
+    "Florence",
+    "Salado",
+    "Belton",
+    "Temple",
+    "Bertram",
+    "Burnet",
+    "Marble Falls",
+    "Lago Vista",
+    "Jonestown",
+  ].map((town) => ({ "@type": "City", name: `${town}, TX` })),
+  knowsAbout: SERVICES.map((service) => service.name),
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        // Data, not code; escaping "<" keeps it from ever closing the script tag early.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_JSON_LD).replace(/</g, "\\u003c") }}
+      />
       <section className="relative isolate flex min-h-[88vh] flex-col items-center overflow-hidden px-6 text-center text-white">
         <Image
           src="/images/hero-austin-stone.jpg"

@@ -7,7 +7,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 
 const INPUT_CLASS =
-  "mt-1 min-h-11 w-full rounded-md border border-maroon/20 bg-cream px-4 py-2 outline-none focus:border-maroon";
+  "mt-1 min-h-11 w-full rounded-sm border border-maroon/20 bg-cream px-4 py-2 outline-none focus:border-maroon";
 
 function Field({
   id,
@@ -59,9 +59,11 @@ export default function ContactForm() {
     const formData = new FormData(form);
     formData.delete("company_website");
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-    formData.append("subject", "New quote request");
+    const clientName = `${formData.get("first_name")} ${formData.get("last_name")}`.trim();
+    // A unique subject per client keeps email apps from grouping requests together.
+    formData.append("subject", `Contact Form: ${clientName}`);
     // Web3Forms shows `name` as the sender in the notification email.
-    formData.append("name", `${formData.get("first_name")} ${formData.get("last_name")}`.trim());
+    formData.append("name", clientName);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -82,7 +84,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <p className="rounded-lg border border-maroon/20 bg-cream-dark/40 px-6 py-8 text-center text-maroon">
+      <p className="rounded-sm border border-maroon/20 bg-cream-dark/40 px-6 py-8 text-center text-maroon">
         Thanks for reaching out — we&apos;ll be in touch soon.
       </p>
     );
@@ -145,7 +147,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="font-heading mt-2 min-h-11 border border-maroon px-10 py-3 text-xs font-medium uppercase tracking-[0.2em] text-maroon transition hover:bg-maroon hover:text-cream disabled:opacity-60"
+        className="mt-2 min-h-11 border border-maroon px-10 py-3 text-xs uppercase tracking-[0.25em] text-maroon transition hover:bg-maroon hover:text-cream disabled:opacity-60"
       >
         {status === "submitting" ? "Submitting..." : "Submit"}
       </button>

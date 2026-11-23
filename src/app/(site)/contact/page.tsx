@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import { EMAIL, EMAIL_HREF, PHONE, PHONE_HREF } from "@/lib/contact";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact | Tomlin Construction Group",
-};
+  description:
+    "Contact Tomlin Construction Group to discuss your custom home, renovation, outdoor living, or commercial project in Liberty Hill, Georgetown, or the surrounding areas. Call (903) 841-1389 or send a message.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -29,7 +33,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <h1 className="font-brand mt-16 border-t border-maroon/15 pt-12 text-3xl font-medium uppercase tracking-[0.2em] text-maroon sm:text-4xl">
+      <h1 className="font-brand pl-[0.2em] mt-16 border-t border-maroon/15 text-center pt-12 text-3xl font-medium uppercase tracking-[0.2em] text-maroon sm:text-4xl">
         Contact Form
       </h1>
       <div className="mt-10">

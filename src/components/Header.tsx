@@ -50,12 +50,12 @@ export default function Header() {
             </span>
           </span>
         </Link>
-        <nav className="flex items-center gap-6 sm:gap-8">
+        <nav className="flex items-center gap-x-3 min-[360px]:gap-x-5 sm:gap-x-8">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-heading inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.15em] text-foreground/70 transition hover:text-maroon sm:min-h-0"
+              className="inline-flex min-h-11 items-center text-xs uppercase tracking-[0.14em] text-foreground/70 transition hover:text-maroon min-[360px]:tracking-[0.18em] sm:min-h-0 sm:tracking-[0.25em]"
             >
               {link.label}
             </Link>
