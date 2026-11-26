@@ -29,6 +29,14 @@ const VALUES = [
 
 const TAGLINES = ["Made To Last", "Grounded In Trust", "Built With Care"];
 
+// Tells Google the site's name, so results show "Tomlin Construction Group" rather than the bare domain.
+const WEBSITE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: `${SITE_URL}/`,
+};
+
 // Business details for search engines (not shown on the page). No street address on purpose:
 // it's listed as a service-area business until there's a business office.
 const BUSINESS_JSON_LD = {
@@ -36,7 +44,8 @@ const BUSINESS_JSON_LD = {
   "@type": "GeneralContractor",
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo-icon.svg`,
+  // Square PNG: Google shows this logo next to the business in search results.
+  logo: `${SITE_URL}/images/logo-512.png`,
   image: `${SITE_URL}${PREVIEW_IMAGE.url}`,
   telephone: PHONE_HREF.replace("tel:", ""),
   email: EMAIL,
@@ -73,7 +82,7 @@ export default function Home() {
       <script
         type="application/ld+json"
         // Data, not code; escaping "<" keeps it from ever closing the script tag early.
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_JSON_LD).replace(/</g, "\\u003c") }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([WEBSITE_JSON_LD, BUSINESS_JSON_LD]).replace(/</g, "\\u003c") }}
       />
       <section className="relative isolate flex min-h-[88vh] flex-col items-center overflow-hidden px-6 text-center text-white">
         <Image
